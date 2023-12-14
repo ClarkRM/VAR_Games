@@ -8,6 +8,7 @@ public class PlayerMovement : MonoBehaviour
     [Header("Movement")]
     [SerializeField] public float moveSpeed = 10f;
     [SerializeField] Transform orientation;
+    [SerializeField] Animator anim;
 
     [Header("Boost")] // TODO enable boost via UI
     [SerializeField] float boostSpeed = 15f;
@@ -76,6 +77,14 @@ public class PlayerMovement : MonoBehaviour
     {
         // calculate movement direction
         moveDirection = orientation.forward * verticalInput + orientation.right * horizontalInput;
+        if (moveDirection != Vector3.zero)
+        {
+            anim.SetBool("isMoving", true);
+        }
+        else
+        {
+            anim.SetBool("isMoving", false);
+        }
         
         if(Input.GetKey(KeyCode.Space))
         {
@@ -107,11 +116,13 @@ public class PlayerMovement : MonoBehaviour
     IEnumerator Boost()
     {
         boost = false;
+        anim.SetBool("BoostActive", true);
         oldSpeed = moveSpeed;
         oldFOV = cam.fieldOfView;
         moveSpeed = boostSpeed;
         cam.fieldOfView = oldFOV * 2;
         yield return new WaitForSeconds(boostLength);
+        anim.SetBool("BoostActive", false);
         moveSpeed = oldSpeed;
         cam.fieldOfView = oldFOV;
         yield return new WaitForSeconds(boostCooldown);

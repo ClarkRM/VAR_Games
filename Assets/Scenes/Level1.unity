@@ -12221,6 +12221,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   orientation: {fileID: 2038391450}
+  anim: {fileID: 1700922416}
   boostSpeed: 15
   boostLength: 1
   boostCooldown: 3
@@ -15278,7 +15279,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2112635477}
   serializedVersion: 2
-  m_LocalRotation: {x: 0.018625185, y: -4.9401605e-10, z: 9.202734e-12, w: 0.99982655}
+  m_LocalRotation: {x: 0.018625189, y: 0.000000003263247, z: -6.078914e-11, w: 0.99982655}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0

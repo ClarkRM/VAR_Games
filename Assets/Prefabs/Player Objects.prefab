@@ -1534,6 +1534,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   orientation: {fileID: 3562015756960340542}
+  anim: {fileID: 5445360745272551203}
   boostSpeed: 15
   boostLength: 1
   boostCooldown: 3
