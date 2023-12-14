@@ -7,6 +7,8 @@ TagManager:
   - Ping
   - PauseMenu
   - Enemy
+  - Collect
+  - Blocker
   layers:
   - Default
   - TransparentFX

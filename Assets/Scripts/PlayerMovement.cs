@@ -6,17 +6,22 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [Header("Movement")]
-    [SerializeField] public float moveSpeed;
+    [SerializeField] public float moveSpeed = 10f;
     [SerializeField] Transform orientation;
 
     [Header("Boost")] // TODO enable boost via UI
-    [SerializeField] float boostSpeed;
-    [SerializeField] float boostLength;
-    [SerializeField] float boostCooldown;
+    [SerializeField] float boostSpeed = 15f;
+    [SerializeField] float boostLength = 1f;
+    [SerializeField] float boostCooldown = 3f;
     [SerializeField] Camera cam;
     [SerializeField] public KeyCode boostKey = KeyCode.E;
 
+    private float slowSpeed = 2f;
+    private float normalSpeed = 10f;
+    private float enemySlowDown = 10.0f;
+
     public bool boost = false;
+    public bool slow = false;
     private float oldSpeed;
     private float oldFOV;
 
@@ -25,7 +30,7 @@ public class PlayerMovement : MonoBehaviour
 
     private Vector3 moveDirection;
     
-    private float health = 100;
+    private float health = 1;
 
     private Rigidbody rb;
 
@@ -34,18 +39,25 @@ public class PlayerMovement : MonoBehaviour
        rb = GetComponent<Rigidbody>();
        rb.freezeRotation = true;
        rb.useGravity = false;
-
     }
 
     private void Update()
     {
-        if(boost &&  Input.GetKeyDown(boostKey))
+        if (boost)
         {
-            StartCoroutine(Boost());
+            oldSpeed = moveSpeed;
+            MyInput();
+            SpeedControl();
+            if (Input.GetKeyDown(boostKey))
+            {
+                StartCoroutine(Boost());
+            }
         }
-
-        MyInput();
-        SpeedControl();
+        else
+        {
+            MyInput();
+            SpeedControl();
+        }
     }
 
     private void FixedUpdate()
@@ -105,12 +117,25 @@ public class PlayerMovement : MonoBehaviour
         yield return new WaitForSeconds(boostCooldown);
         boost = true;
     }
-    public void TakeDamage(int damage)
+    private void OnCollisionEnter(Collision collision)
     {
-        health -= damage;
-        if (health <= 0)
+        if (collision.gameObject.CompareTag("Enemy"))
         {
-           Destroy(gameObject);
+            Debug.Log("Player touched an enemy!");
+            if (!slow) { StartCoroutine(Slow()); }
         }
+    }
+    IEnumerator Slow()
+    {
+        slow = true;
+        // set movespeed to slowspeed
+        moveSpeed = slowSpeed;
+        // wait 10 seconds
+        yield return new WaitForSeconds(10);
+        // reset movespeed to normalspeed
+        moveSpeed = normalSpeed;
+        // wait
+        yield return new WaitForSeconds(3);
+        slow = false;
     }
 }

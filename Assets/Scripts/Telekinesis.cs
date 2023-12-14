@@ -23,7 +23,7 @@ public class Telekinesis : MonoBehaviour
     {
         ray = cam.ScreenPointToRay(Input.mousePosition);
 
-        if(Physics.Raycast(ray, out RaycastHit hit, grabbableDistance/1.5f, grabbable))
+        if(Physics.Raycast(ray, out RaycastHit hit, grabbableDistance, grabbable))
         {
             text.text = "Use telekinesis to grab";
         }

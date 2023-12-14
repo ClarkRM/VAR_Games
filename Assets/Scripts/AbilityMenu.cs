@@ -290,6 +290,7 @@ public class AbilityMenu : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         menu.SetActive(false);
         pm.moveSpeed = speed;
+        print("abilty menu " + speed);
         tpc.enabled = true;
         if (activeCam)
         {

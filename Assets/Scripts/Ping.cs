@@ -12,7 +12,12 @@ public class Ping : MonoBehaviour
     [SerializeField] float pingCooldown;
     [SerializeField] Material pingMat;
     public bool ping;
+    private AudioSource sound;
 
+    private void Start()
+    {
+        sound = gameObject.GetComponent<AudioSource>();
+    }
     private void Update()
     {
         if(ping && Input.GetKeyUp(pingKey))
@@ -28,17 +33,17 @@ public class Ping : MonoBehaviour
             }
         }
 
-    void OnCollisionEnter(Collision other)
-    {
-        GameObject GB = other.gameObject;
-        if (GB.CompareTag("Enemy")){ 
-            Enemy enemyHealth = GB.GetComponent<Enemy>();
-            if (enemyHealth != null)
-            {
-                enemyHealth.TakeDamage(50);
-            }
-        }
-    }
+    //void OnCollisionEnter(Collision other)
+   // {
+    //    GameObject GB = other.gameObject;
+    //    if (GB.CompareTag("Enemy")){ 
+    //        Enemy enemyHealth = GB.GetComponent<Enemy>();
+    //        if (enemyHealth != null)
+    //        {
+   //             enemyHealth.TakeDamage(50);
+    //        }
+    //    }
+   // }
 
     IEnumerator ChangeMat(Collider other)
     {
@@ -52,6 +57,7 @@ public class Ping : MonoBehaviour
     IEnumerator PingExpand()
     {
         ping = false;
+        sound.Play();
         float currentTime = 0f;
         while (currentTime < pingTime)
         {

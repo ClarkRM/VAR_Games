@@ -8,12 +8,24 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/StartScene.unity
     guid: 9ef88b1324ed0a744965f949d964913a
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level1Practice.unity
     guid: d7568fd0d6518614a9c5d9a653cacefe
   - enabled: 1
     path: Assets/Scenes/Level1.unity
+    guid: c869a477ebd250e43b9e26bf6f9881d8
+  - enabled: 1
+    path: Assets/Scenes/Before2.unity
+    guid: 9b71eba1077c6c0469c5a93507b66dca
+  - enabled: 1
+    path: Assets/Scenes/Level2.unity
     guid: 9fc0d4010bbf28b4594072e72b8655ab
+  - enabled: 1
+    path: Assets/Scenes/ScavengerHunt.unity
+    guid: 661db6cba30955c47bc24c18b352dc96
+  - enabled: 1
+    path: Assets/Scenes/CoreRoom.unity
+    guid: 6a1e66efd81494c3f91e763b2d924f5c
   - enabled: 1
     path: Assets/Scenes/Rules.unity
     guid: f0214a0cfb48f1b4f83509c60e50ef72
@@ -26,4 +38,13 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Win.unity
     guid: 9fea998cbda15524b9b4b55ab9179513
+  - enabled: 1
+    path: Assets/Scenes/Hint2.unity
+    guid: d296bfbf6d8670b4e97e3ef93d9765c7
+  - enabled: 0
+    path: Assets/Scenes/Level3.unity
+    guid: 2ca202f1ed52a3641bea1ddde6d87ef8
+  - enabled: 1
+    path: Assets/Scenes/About.unity
+    guid: 75fa6b7ed4f57d94abd1703230d622c7
   m_configObjects: {}

@@ -7,6 +7,9 @@ public class Enemy : MonoBehaviour
     public float moveSpeed = 5f;
     public int health = 100;
 
+    public float x;
+    public float y;
+
     private Rigidbody rb;
 
     private void Start()
@@ -16,6 +19,9 @@ public class Enemy : MonoBehaviour
         rb.useGravity = false;
 
     }
+    private void Update() {
+        Move();
+    }
 
     private void FixedUpdate()
     {
@@ -23,23 +29,23 @@ public class Enemy : MonoBehaviour
     }
 
     private void Move()
-    {
-        Vector3 randomDirection = new Vector3(Random.Range(-1f, 1f), 0f, Random.Range(-1f, 1f)).normalized;
+    {        
+        Vector3 randomDirection = new Vector3(Random.Range(-1f, 1f), 0f,  Random.Range(-1f, 1f)).normalized;
         //transform.Translate(randomDirection * speed * Time.deltaTime);
-        rb.AddForce(randomDirection * moveSpeed * 10f, ForceMode.Force);
+        rb.AddForce(randomDirection * moveSpeed * 20f, ForceMode.Force);
     }
     
-    public void TakeDamage(int damage)
-    {
-        health -= damage;
-        if (health <= 0)
-        {
-           Destroy(rb);
-        }
-    }
-    private void OnTriggerEnter(Collider other)
-    {
-    }
+    //public void TakeDamage(int damage)
+    //{
+    //    health -= damage;
+    //    if (health <= 0)
+    //    {
+      //     Destroy(rb);
+     //   }
+    //}
+    //private void OnTriggerEnter(Collider other)
+    //{
+    //}
     
 }
 
